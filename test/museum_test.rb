@@ -53,4 +53,32 @@ class MuseumTest < Minitest::Test
     dmns.recommend_exhibits(patron_2)
     #recommends imax
   end
+
+    # Iteration 3
+    # For patrons_by_exhibit_interest, this method takes no arguments and returns
+    # a Hash where each key is an Exhibit. The value associated with that Exhibit
+    # is an Array of all the Patrons that have an interest in that exhibit.
+    # ticket_lottery_contestants returns an array of patrons that do not have
+    # enough money to see an exhibit, but are interested in that exhibit.
+    # The lottery winner is generated randomly based on the available contestants
+    # when draw_lottery_winner is called.
+    # You will need to use a stub to test the announce_lottery_winner method in
+    # conjunction with the draw_lottery_winner method. JOY!
+    def test_it_can_has_patrons
+      dmns = Museum.new("Denver Museum of Nature and Science")
+      gems_and_minerals = Exhibit.new({name: "Gems and Minerals", cost: 0})
+      dead_sea_scrolls = Exhibit.new({name: "Dead Sea Scrolls", cost: 10})
+      imax = Exhibit.new({name: "IMAX",cost: 15})
+      patron_1 = Patron.new("Bob", 20)
+      patron_2 = Patron.new("Sally", 20)
+      patron_3 = Patron.new("Johnny", 5)
+
+      dmns.add_exhibit("Dead Sea Scrolls")
+
+      dmns.add_exhibit("Gems and Minerals")
+
+      dmns.add_exhibit("IMAX")
+
+      assert_equal [], dmns.patrons
+    end
 end
